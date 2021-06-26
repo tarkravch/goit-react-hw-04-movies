@@ -1,0 +1,19 @@
+.nav {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  text-decoration: none;
+  width: 20%;
+}
+.cast {
+  display: flex;
+  max-width: 90%;
+  flex-wrap: wrap;
+  margin: -10px;
+  .cast-item {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    list-style: none;
+  }
+}

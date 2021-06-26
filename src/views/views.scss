@@ -1,0 +1,54 @@
+.header {
+}
+
+.trending {
+  display: block;
+  margin: 0 auto 5px 50px;
+}
+.details-btn {
+  display: block;
+  width: 100px;
+  height: 30px;
+  color: tomato;
+  background-color: wheat;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+.details-block {
+  display: flex;
+  // align-items: ;
+  margin-left: 50px;
+}
+.details-img {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+.details-info {
+  display: block;
+  margin-left: 20px;
+}
+.details-additional {
+  display: block;
+  margin-left: 50px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  margin-left: 50px;
+}
+.form-btn {
+  display: block;
+  width: 70px;
+  height: 20px;
+  color: tomato;
+  background-color: wheat;
+  // border-radius: 10px;
+  cursor: pointer;
+  margin-left: 20px;
+}
