@@ -9,13 +9,10 @@ class Cast extends Component {
 
   async componentDidMount() {
     const { movieId } = this.props.match.params;
-    console.log(movieId);
     const response = await Axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${KEY}&language=en-US`
     );
-    console.log(response.data.cast);
     this.setState({ cast: response.data.cast });
-    console.log(this.state.cast);
   }
 
   render() {

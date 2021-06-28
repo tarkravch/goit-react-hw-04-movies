@@ -3,7 +3,13 @@
 
 .trending {
   display: block;
-  margin: 0 auto 5px 50px;
+  margin: 0 auto;
+  width: 100%;
+}
+.trending-title {
+  display: block;
+  margin: 0 auto 20px auto;
+  text-align: center;
 }
 .details-btn {
   display: block;
@@ -41,6 +47,7 @@
   align-items: center;
   width: 30%;
   margin-left: 50px;
+  margin-bottom: 20px;
 }
 .form-btn {
   display: block;
@@ -51,4 +58,22 @@
   // border-radius: 10px;
   cursor: pointer;
   margin-left: 20px;
+}
+.movies-block {
+  display: flex;
+  justify-content: center;
+}
+.movies-list {
+  display: flex;
+  max-width: 90%;
+
+  flex-wrap: wrap;
+  margin: -15px;
+
+  .movies-item {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    max-width: 150px;
+  }
 }

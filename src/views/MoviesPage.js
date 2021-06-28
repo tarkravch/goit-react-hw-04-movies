@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import refs from "../refs";
 const KEY = "478a6293c6d1ac9e31348f3204c340c0";
 
 class MoviesPage extends Component {
@@ -9,16 +10,23 @@ class MoviesPage extends Component {
     query: "",
   };
 
+  async componentDidMount() {
+    if (refs.searchQuery !== "") {
+      await this.setState({ query: refs.searchQuery });
+      this.searchMovie();
+      this.setState({ query: "" });
+    } else {
+      return;
+    }
+  }
+
   handleChange = (e) => {
     this.setState({ query: e.currentTarget.value });
-    console.log(e);
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
     this.setState({ query: e.currentTarget.value });
-    console.log(this.state.query);
     this.searchMovie();
     this.setState({ query: "" });
   };
@@ -28,7 +36,9 @@ class MoviesPage extends Component {
     const response = await Axios.get(
       `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${KEY}&language=en-US&page=1&include_adult=false`
     );
-    console.log(query);
+    refs.previousLocation = this.props.location;
+    refs.searchQuery = query;
+
     this.setState({ movies: response.data.results });
   }
 
@@ -51,13 +61,27 @@ class MoviesPage extends Component {
           </button>
         </form>
 
-        <ul>
-          {this.state.movies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`${match.url}/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))}
-        </ul>
+        <div className="movies-block">
+          <ul className="movies-list">
+            {this.state.movies.map((movie) => (
+              <li key={movie.id} className="movies-item">
+                <Link
+                  to={{
+                    pathname: `${match.url}/${movie.id}`,
+                  }}
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                    width="150"
+                    height="150"
+                  />
+                  {movie.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </>
     );
   }

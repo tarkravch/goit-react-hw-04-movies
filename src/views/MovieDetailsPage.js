@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Route, Link } from "react-router-dom";
 import Cast from "../components/Cast";
 import Reviews from "../components/Reviews";
+import refs from "../refs";
 const KEY = "478a6293c6d1ac9e31348f3204c340c0";
 
 class MovieDetailsPage extends Component {
@@ -17,24 +18,23 @@ class MovieDetailsPage extends Component {
 
   async componentDidMount() {
     const { movieId } = this.props.match.params;
-    console.log(movieId);
     const response = await Axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=en-US`
     );
 
     this.setState({ ...response.data });
-    console.log(this.state.id);
   }
 
   render() {
     const { overview, genres, id, poster_path, title, vote_average } =
       this.state;
+    const location = refs.previousLocation;
 
     return (
       <div>
         <button
           type="button"
-          onClick={this.props.history.goBack}
+          onClick={() => this.props.history.push(location)}
           className="details-btn"
         >
           Go back
